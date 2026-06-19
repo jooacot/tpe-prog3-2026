@@ -2,21 +2,27 @@ import java.util.ArrayList;
 
 public class Camion {
 
-    private String id;
+    private int id;
+    private String patente;
     private int capacidad;
     private int capacidadDisponible;
     private boolean esRefrigerado;
+    public ArrayList<Paquete> getPaquetes() {
+        return paquetes;
+    }
+
     private ArrayList<Paquete> paquetes;
 
-    public Camion(String id, int capacidad, boolean esRefrigerado) {
-        this.paquetes = new ArrayList<>();
+    public Camion(int id, int capacidad, boolean esRefrigerado, String patente) {
+        paquetes = new ArrayList<>();
         this.id = id;
+        this.patente = patente;
         this.esRefrigerado = esRefrigerado;
         this.capacidad = capacidad;
         this.capacidadDisponible = capacidad;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -24,16 +30,24 @@ public class Camion {
         return capacidad;
     }
     
+    public int getCapacidadDisponible() {
+        return capacidadDisponible;
+    }
+    
+    public String getPatente() {
+        return patente;
+    }
+    
     public boolean esRefrigerado(){
         return esRefrigerado;
     }
     
-     public boolean puedeTransportar(Paquete p) {
+    public boolean puedeTransportar(Paquete p) {
 
         if (p.contieneAlimentos() && !this.esRefrigerado)
             return false;
             
-        return p.getPeso() <= getCapacidad();
+        return p.getPeso() <= getCapacidadDisponible();
     }
     
     public void asignar(Paquete p){

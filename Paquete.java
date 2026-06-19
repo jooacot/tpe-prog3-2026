@@ -1,15 +1,21 @@
 public class Paquete {
 
+    private int id;
     private String codigo;
     private int peso;
     private boolean contieneAlimentos;
     private int nivelUrgencia;
 
-    public Paquete(String codigo, int peso, boolean contieneAlimentos, int nivelUrgencia) {
+    public Paquete(int id, String codigo, int peso, boolean contieneAlimentos, int nivelUrgencia) {
+        this.id = id;
         this.codigo = codigo;
         this.peso = peso;
         this.contieneAlimentos = contieneAlimentos;
         this.nivelUrgencia = nivelUrgencia;
+    }
+    
+    public int getId() {
+        return id;
     }
 
     public String getCodigo() {
